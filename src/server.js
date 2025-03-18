@@ -1,6 +1,12 @@
-const app = require('./app');
-const PORT = process.env.PORT || 5000;  // Default to port 3000 if no environment variable
+import express from 'express';
+import app from './app.js';
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+const server = express();
+const PORT = process.env.PORT || 5000;
+
+server.use(app);  // Use the app.js file's routes and settings
+
+server.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
+
